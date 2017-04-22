@@ -18,3 +18,9 @@ This program reads in a group of clustered read counts files originating from th
 *goseq_signature_terms.py*
 
 This script analyses a directory containing tab-delimited text files of all pairwise comparisons of treatments. These files must contain two columns, where column 1 contains functional terms, and column 2 contains the associated FDR/P-values for these. The file's header will be ignored if it is present. The script is also able to have a FDR/P-value cut-off enforced when obtaining signature terms.
+
+## QIIME related
+### NMDS table creation
+*qiime_table_to_nmds.py*
+
+This program will read in the table files QIIME creates from the taxa_summary_plots script and reformat this data into a table that can be read into R and VEGAN.
