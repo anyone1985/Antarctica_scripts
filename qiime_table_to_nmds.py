@@ -24,11 +24,8 @@ p.add_argument("-o", "--o", "-output", "--output", dest="output",
 args = p.parse_args()
 
 # Obtain data from arguments
-#fileName = args.input
-#outName = args.output
-
-fileName = 'table_mc88458_sorted_L3.txt'
-outName = 'qiime.class.nmds'
+fileName = args.input
+outName = args.output
 
 #### CORE LOOP
 savedDicts = []
