@@ -41,7 +41,7 @@ qiimeFileHeader = qiimeFile[0].split('\t')
 if qiimeFileHeader[0] == '#OTU ID':
         del qiimeFileHeader[0]
 
-# Tally counts at specified level
+# Obtain counts from file
 savedDicts = []
 for i in range(1, len(qiimeFile[0].split('\t'))):
         sampleDict = {}
@@ -68,7 +68,7 @@ for i in range(1, len(qiimeFile[0].split('\t'))):
 
 #### Format an output table from the saved dictionaries
 
-# Pull out all entries found in the data at the specified taxonomic level
+# Pull out all entries found in the data
 taxonomyList = []
 for dictionary in savedDicts:
     for entry in dictionary.items():
