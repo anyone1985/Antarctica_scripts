@@ -7,11 +7,11 @@ Contained within this repository are scripts used for the following procedures:
 ### Read count clustering
 *cluster_read_counts.py*
 
-This program reads in a cdhit .clstr file and htseq output file and clusters reads from redundant mappings into a single count corresponding to the representative sequence from each cluster. This script is intended as a precursor to the clustered_read_counts_combine.py script which will take individually clustered files and create a table that edgeR can read. This script is likely to be a bit heavy on memory depending on file size. 
+This program reads in a cdhit .clstr file and htseq output file and clusters reads from redundant mappings into a single count corresponding to the representative sequence from each cluster. This script is intended as a precursor to the *clustered_read_counts_combine.py* script which will take individually clustered files and create a table that edgeR can read. This script is likely to be a bit heavy on memory depending on file size. 
 
 *clustered_read_counts_combine.py*
 
-This program reads in a group of clustered read counts files originating from the cluster_read_counts.py script and converts this into a table that is readable by edgeR. As with the previous script, this could be memory intensive depending on file sizes.
+This program reads in a group of clustered read counts files originating from the *cluster_read_counts.py* script and converts this into a table that is readable by edgeR. As with the previous script, this could be memory intensive depending on file sizes.
 
 ## GOseq related
 ### Signature terms from GOseq
@@ -34,4 +34,12 @@ This program will read in the table files QIIME creates from the taxa_summary_pl
 ### File preparation for downstream analysis
 *kslam_xml_taxIdMap.py*
 
-This program will read in the xml files k-SLAM produces and create a tab-delimited file that can be used for later Krona or NMDS plot generation.
+This program will read in the xml files k-SLAM produces and create a tab-delimited file that can be used for later Krona or NMDS plot generation. Note that the main benefit of producing a Krona plot through this avenue (rather than by using ktImportTaxonomy) is that file size can be significantly reduced. The plot is not as well-formatted as the one ktImportTaxonomy produces by default, however.
+
+*kslam_taxIdMap_to_ktImportText.py*
+
+Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce tab-delimited file(s) that can be called by ktImportText to produce Krona plots.
+
+*kslam_taxIdMap_to_nmds_group.py*
+
+Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce a tab-delimited file that can be read into R and used by VEGAN to produce NMDS plots. The taxonomic rank to summarise abundances to can be specified if a NMDS at the deepest rank assigned by k-SLAM is not wanted.
