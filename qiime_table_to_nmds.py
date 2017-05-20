@@ -1,6 +1,6 @@
 #! python3
 # qime_table_to_nmds.py
-# Simple script that will read in a QIIME table file (originating from the taxa_summary_plots script or equivalent) and
+# Simple script that will read in a QIIME table file (originating from the summarize_taxa_through_plots.py script or equivalent) and
 # create a table that is amenable to NMDS. The arguments needed for this script the input and output file names.
 # If you are choosing to look at genus level,  you should use the L6 file. Other levels should similarly use the appropriate L# file.
 # Note that this script will find the lowest level possible in whatever file you feed it. That means a genus level NMDS may contain
