@@ -24,3 +24,8 @@ This script analyses a directory containing tab-delimited text files of all pair
 *qiime_table_to_nmds.py*
 
 This program will read in the table files QIIME creates from the taxa_summary_plots script and reformat this data into a table that can be read into R and VEGAN.
+
+### Krona file formatting
+*qiime_to_ktImportText.py*
+
+This program will read in the table files QIIME creates from the taxa_summary_plots script and reformat this data into a table that can be read by ktImportText to produce Krona plots.
