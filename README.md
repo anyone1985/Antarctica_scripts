@@ -29,3 +29,9 @@ This program will read in the table files QIIME creates from the taxa_summary_pl
 *qiime_to_ktImportText.py*
 
 This program will read in the table files QIIME creates from the taxa_summary_plots script and reformat this data into a table that can be read by ktImportText to produce Krona plots.
+
+## k-SLAM related
+### File preparation for downstream analysis
+*kslam_xml_taxIdMap.py*
+
+This program will read in the xml files k-SLAM produces and create a tab-delimited file that can be used for later Krona or NMDS plot generation.
