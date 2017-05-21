@@ -38,8 +38,8 @@ This program will read in the xml files k-SLAM produces and create a tab-delimit
 
 *kslam_taxIdMap_to_ktImportText.py*
 
-Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce tab-delimited file(s) that can be called by ktImportText to produce Krona plots.
+Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce tab-delimited file(s) that can be called by ktImportText to produce Krona plots. This script requires a **reduced** taxonomy file (possibly produced by MetaPalette's generate_taxonomy_taxid.py script).
 
 *kslam_taxIdMap_to_nmds_group.py*
 
-Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce a tab-delimited file that can be read into R and used by VEGAN to produce NMDS plots. The taxonomic rank to summarise abundances to can be specified if a NMDS at the deepest rank assigned by k-SLAM is not wanted.
+Reads in the output(s) of *kslam_xml_taxIdMap.py* to produce a tab-delimited file that can be read into R and used by VEGAN to produce NMDS plots. The taxonomic rank to summarise abundances to can be specified if a NMDS at the deepest rank assigned by k-SLAM is not wanted. This script requires a **full** taxonomy file (possibly produced by MetaPalette's generate_taxonomy_taxid.py script).
