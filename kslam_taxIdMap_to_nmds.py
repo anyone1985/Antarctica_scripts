@@ -15,7 +15,7 @@ taxonomy = ['superkingdom', 'phylum', 'class', 'order', 'family', 'genus', 'spec
 usage = """%(prog)s reads in text file(s) resulting from the 
 kslam_xml_taxIdMap.py script to produce a table that is amenable to NMDS.
 This script may be provided with either the individual file names in the cmd line, or a text file
-containing the file names on a new line per entry. Other necessary inputs are the location of a taxonomy
+containing the file names on a new line per entry. Other necessary inputs are the location of a full taxonomy
 file (possibly produced by MetaPalette's generate_taxonomy_taxid.py script), the output file name,
 and the taxonomy level to summarise abundances at (e.g., genus, class, etc.)
 """
