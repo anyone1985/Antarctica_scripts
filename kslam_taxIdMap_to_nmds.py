@@ -1,5 +1,5 @@
 #! python3
-# kslam_taxIdMap_to_ktImportText.py
+# kslam_taxIdMap_to_nmds.py
 # This script reads in the output(s) of kslam_xml_taxIdMap.py and formats a file that can be
 # read in to VEGAN in R. Provided arguments are the file name(s), the output NMDS-ready tab-delimited file,
 # and the taxonomic level you want to summarise counts under.
