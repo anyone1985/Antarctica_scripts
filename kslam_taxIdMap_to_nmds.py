@@ -24,7 +24,7 @@ p.add_argument("pos_input", nargs = "*", help="list k-SLAM tax id mapped file(s)
 p.add_argument("-i", "--i", "-input", "--input", dest="txt_input",
                   help="optional ability to provide a text file which lists the k-SLAM tax id mapped file(s) instead of providing it in cmd line")
 p.add_argument("-t", "--t", "-taxonomy", "--taxonomy", dest="taxonomy",
-                  help="taxonomy file (possibly produced by MetaPalette's generate_taxonomy_taxid.py script)")
+                  help="full taxonomy file (possibly produced by MetaPalette's generate_taxonomy_taxid.py script)")
 p.add_argument("-o", "--o", "-output", "--output", dest="output",
                   help="output file name")
 p.add_argument("-l", "--l", "-level", "--level", dest="level", choices = taxonomy,
