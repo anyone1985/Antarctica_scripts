@@ -37,26 +37,30 @@ taxonomy_name = args.taxonomy
 taxonomy_level = args.level
 
 # Get file name(s) depending on whether they were provided in the cmd line or in a text file
-try:
-        if args.pos_input == [] and args.txt_input != None:
-                txt_name = args.txt_input
-                txt_contents = open(txt_name, 'r')
-                kslam_files = []
-                for line in txt_contents:
-                        if line == '' or line == '\r\n' or line == '\n': continue
-                        kslam_files.append(line.rstrip('\r\n'))
-        elif args.pos_input != []:
-                kslam_files = args.pos_input
-        else:
-                print('Something went wrong with finding the tax id mapped k-SLAM file(s).')
-                print('It seems like you didn\'t provide any arguments that pointed towards the file(s).')
-                print('Make sure to either positionally supply the individual file names in the cmd line, or provide a text file with these names using the -i tag.')
-except:
-        print('Something went wrong with finding the tax id mapped k-SLAM files.')
-        if args.pos_input == []:
-                print('It is likely that I couldn\'t find the text file you pointed at using the -i tag. Make sure the file name is correct, or provide the full directory to this file.')
-        else:
-                print('I am not sure what happened here. Double-check your arguments to make sure everything is correct.')
+if args.txt_input != None:
+        txt_name = args.txt_input
+        txt_contents = open(txt_name, 'r')
+        kslam_files = []
+        for line in txt_contents:
+                if line == '' or line == '\r\n' or line == '\n': continue
+                kslam_files.append(line.rstrip('\r\n'))
+        # Check if files exist
+        for file in kslam_files:
+                if not os.path.isfile(file):
+                        print('Can\'t find ' + file + '. Make sure the name is correct, or you specify the path to this file if it is not in the current directory')
+                        quit()
+elif args.pos_input != []:
+        kslam_files = args.pos_input
+        # Check if files exist
+        for file in kslam_files:
+                if not os.path.isfile(file):
+                        print('Can\'t find ' + file + '. Make sure the name is correct, or you specify the path to this file if it is not in the current directory')
+                        quit()
+elif args.pos_input == [] and args.txt_input == None:
+        print('Something went wrong with finding the kslam file(s).')
+        print('It seems like you didn\'t provide any arguments that pointed towards the file(s).')
+        print('Make sure to either positionally supply the individual file names in the cmd line, OR provide a text file with these names using the -i tag.')
+
 print(kslam_files)
 
 # Find the index of the specified tax level

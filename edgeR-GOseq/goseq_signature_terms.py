@@ -38,8 +38,6 @@ Also note that this script assumes that naming conventions are the same as how e
 """
 
 p = argparse.ArgumentParser(description=usage)
-#p.add_argument("-i", "--i", "-input", "--input", dest="xml",
-#                  help="k-SLAM xml file")
 p.add_argument("-e", "--e", "-e", "--e", dest="significance", default = "unspecified",
                   help="E-value cut-off. If unspecified, no cut-off is used. Can be entered as an integer or in scientific notation (e.g., 1e-5)")
 p.add_argument("-d", "--d", "-direction", "--direction", dest="direction", choices = ["up", "down", "both", "UP", "DOWN", "BOTH"], default = "both",
@@ -55,8 +53,8 @@ spacer = args.spacer
 
 # Create output directory if needed
 outputDir = 'signature_terms'
-if not os.path.isdir(os.getcwd() + '//' + outputDir):
-        os.mkdir(os.getcwd() + '//' + outputDir)
+if not os.path.isdir(os.path.join(os.getcwd(), outputDir)):
+        os.mkdir(os.path.join(os.getcwd(), outputDir))
 
 # Sort out file naming [since the spacer string is specified, if the files are named appropriately this should save the user from manually specifying their sample names]
 fileNames = []
@@ -68,6 +66,10 @@ spaceRegex = re.compile(r'(.+?)' + spacer + r'(.+?)\.')
 samples = []
 for name in fileNames:
         regHit = spaceRegex.search(name)
+        if regHit == None:
+                print('I think there are files in this directory that shouldn\'t be here. Example: ' + name)
+                print('Remove this file and try again.')
+                quit()
         samples.extend([regHit.group(1),regHit.group(2)])
 samples = list(set(samples))            # Non-redundant sample name list
 
@@ -236,7 +238,7 @@ for i in range(0, len(samples)):
                         outName = samples[i] + '.' + wordlist[n] + '.None.txt'
                         print('Found nothing for this group (' + samples[i] + ' ' + wordlist[n] + ')')
                         # Create quick output file
-                        outputFile = open(os.getcwd() + '//' + outputDir + '//' + outName, 'w')
+                        outputFile = open(os.path.join(os.getcwd(), outputDir, outName), 'w')
                         outputFile.write('None')
                         outputFile.close()
                         continue
@@ -272,7 +274,7 @@ for i in range(0, len(samples)):
                         outName = samples[i] + '.' + wordlist[n] + '.None.txt'
                         print('Found nothing for this group (' + samples[i] + ' ' + wordlist[n] + ')')
                         # Create quick output file
-                        outputFile = open(os.getcwd() + '//' + outputDir + '//' + outName, 'w')
+                        outputFile = open(os.path.join(os.getcwd(), outputDir, outName), 'w')
                         outputFile.write('None')
                         outputFile.close()
                 # Format output if we do have common terms
@@ -284,7 +286,7 @@ for i in range(0, len(samples)):
                         # Create file now
                         outName = samples[i] + '.' + wordlist[n] + '.vs.ALL.txt'
                         outputText = '\n'.join(associatedTerms)
-                        outputFile = open(os.getcwd() + '//' + outputDir + '//' + outName, 'w')
+                        outputFile = open(os.path.join(os.getcwd(), outputDir, outName), 'w')
                         outputFile.write(outputText)
                         outputFile.close() 
 

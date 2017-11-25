@@ -8,7 +8,7 @@
 
 import re, os, argparse
 
-regex = re.compile(r'\w__(.+)')
+regex = re.compile(r'\w__([A-Za-z0-9-_\[\]\s]+?)(;|$)')
 
 ##### USER INPUT SECTION
 
@@ -47,7 +47,8 @@ for i in range(1, len(qiimeFile[0].split('\t'))):
         sampleDict = {}
         for line in qiimeFile:
                 # Skip header
-                if line.startswith('#OTU ID'): continue
+                if line.startswith('#'):
+                        continue
                 # Handle unassigned
                 if line.startswith('Unassigned'):
                         name = 'Unassigned'
@@ -55,23 +56,15 @@ for i in range(1, len(qiimeFile[0].split('\t'))):
                         sampleDict[name] = float(line[i])
                         continue
                 # Remove 'other' labels
-                line = line.replace(';Other', '')
-                line = line.split('\t')
-                taxLevels = line[0].split(';')
-                revLevels = list(reversed(taxLevels))
-                # Add to sample dictionary
-                for x in range(len(revLevels)):
-                        taxName = regex.match(revLevels[x])
-                        if taxName != None:
-                                name = taxName.group(1)
-                                try:
-                                        prev = regex.match(revLevels[x+1]).group(1)
-                                        combined = prev + ';' + name
-                                        sampleDict[combined] = float(line[i])
-                                        break
-                                except:
-                                        sampleDict[name] = float(line[i])
-                                break
+                #line = line.replace(';Other', '')
+                sl = line.split('\t')
+                # Get deepest node
+                nodes = regex.findall(sl[0])
+                name = nodes[-1][0]
+                if name not in sampleDict:
+                        sampleDict[name] = float(sl[i])
+                else:
+                        sampleDict[name] += float(sl[i])
         # Add into the overall dictionary list
         savedDicts.append(sampleDict)
 

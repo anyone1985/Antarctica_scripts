@@ -13,21 +13,24 @@ usage = """%(prog)s reads in a group of clustered read counts files
  (e.g., 'SITE1.clstrd.counts' will have its column labelled 'SITE1').
 """
 p = argparse.ArgumentParser(description=usage)
-p.add_argument("-e", "--e", "-extension", "--extension", dest="extension",
+p.add_argument("-d", "-directory", dest="directory",
+                  help="Enter the directory where the clustered htseq read counts files can be located. Enter '.' to signify the current directory.")
+p.add_argument("-e", "-extension", dest="extension",
                   help="Enter the extension of the clustered htseq read counts files (e.g., '.clstrd.counts') to distinguish which files this script should read. This should be unique to the files originating from cluster_read_counts.py.")
 p.add_argument("-o", "--o", "--output", "-output", dest="output",
              help="output file name")
 args = p.parse_args()
 
 # Obtain data from arguments
+directory = args.directory
 extension = args.extension
 outName = args.output
 
 # Obtain data from htseq output files
 fileNames = []
-for file in os.listdir('.'):
+for file in os.listdir(directory):
         if file.endswith(extension):
-                fileNames.append(file)
+                fileNames.append(os.path.join(directory, file))
 
 #### CORE LOOP
 ongoingCount = 0

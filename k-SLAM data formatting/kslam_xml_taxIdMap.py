@@ -1,8 +1,8 @@
 #! python3
 # kslam_xml_taxIdMap.py
 # This script will read in the kslam xml output file and create a tab-delimited text
-# file that can be used for further downstream scripts that can create a text file
-# amenable to ktImportText Krona plot generation, or be used for NMDS plot generation using VEGAN.
+# file that can be used for further downstream scripts that is
+# amenable to ktImportText Krona plot generation or NMDS plot generation.
 
 import re, os, argparse
 
