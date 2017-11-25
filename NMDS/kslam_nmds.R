@@ -39,7 +39,7 @@ hull.data <- rbind(grp.a, grp.b, grp.c)  #combine grp.a and grp.b
 hull.data
 
 # Pull out groups above a specified abundance level
-abundantspecies <- kslam.dat[,colSums(kslam.dat) > 0.12]
+abundantspecies <- kslam.dat[,colSums(kslam.dat) > 0.12]   # Arbitrary value: this presented the most abundant species without cluttering the plot
 ncol(abundantspecies)
 abundantspecies = colnames(abundantspecies)
 abun.species.nmds.scores <- subset(species.scores, species.scores[,3] %in% abundantspecies)
