@@ -54,7 +54,23 @@ This folder contains scripts used for generating NMDS tables, and for perform NM
 - 1. qiime_table_to_nmds.py
   - This script will read in a QIIME table file (originating from the summarize_taxa_through_plots.py script or equivalent) and create a table that is amenable to NMDS.
 - 2. qiime_nmds.R
-  - 
+  - Creates NMDS plots based upon NMDS formatted table file from above script. The outputs are intended to be created as PDFs to be edited in Illustrator manually to organise the labels optimally.
+
+Also provided is qiime_table_to_nmds_keepPrev.py. This was helpful for manual inspection of results to see what the higher taxonomy levels were for each prediction.
+
+## QIIME data formatting
+This folder contains a single script.
+- 1. qiime_to_ktImportText.py
+  - This script will read in a QIIME table file (originating from the summarize_taxa_through_plots.py script or equivalent) and create a text file that is amenable to ktImportText to produce Krona plot(s).
+
+## Statistcis and helper scripts
+This folder includes scripts that were used for performing bastic statistical tests, as well as for analysing the overall results.
+- 1. anova_tukeys_stats.R
+  - This script will compute ANOVA and Tukey's HSD for input files.
+- 2. nmds_convenience.py
+  - This script was made quickly just to provide assistance with parsing a NMDS file. It will pull apart a NMDS file and put sorted columns of taxa abundance into your clipboard which can be pasted into Excel/an equivalent program. Data in this format can be used by the below script.
+- 3. top_taxa_kslam_multicol.py
+
 
 ### Read count clustering
 *cluster_read_counts.py*
