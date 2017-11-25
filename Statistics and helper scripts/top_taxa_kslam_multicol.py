@@ -1,5 +1,5 @@
 #! python3
-# top_genera_kslam_multicol.py
+# top_taxa_kslam_multicol.py
 # This script was made quickly just to provide assistance with parsing
 # columns in Microsoft Excel (or equivalent) produced by the nmds_convenience.py script.
 # To use this you need to edit the underlying script to reflect the name of your metapalette-formatted
